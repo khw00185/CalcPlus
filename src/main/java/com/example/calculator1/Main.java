@@ -80,7 +80,7 @@ public class Main {
             scanner.nextLine(); //한 줄 비우기
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             String answer = scanner.nextLine();
-            if (answer.equals("exit")) {
+            if ("exit".equals(answer)) { //null safe하게 작성해야 함
                 break;
             }
         }
