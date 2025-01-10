@@ -4,15 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ArithmeticCalculator<T> {
+public class ArithmeticCalculator<T extends Number> {
     //연산결과 저장 리스트
     private final List<T> resultList = new ArrayList<>();
 
 
     public double calculate(T first, T second, OperatorType operator) {
         double result = 0;
-        double firstNum = ((Number) first).doubleValue(); //T를 double형으로 변환
-        double secondNum = ((Number) first).doubleValue();
+        double firstNum = first.doubleValue(); //T를 double형으로 변환
+        double secondNum = second.doubleValue();
         switch (operator) {
             case ADD:
                 result = firstNum + secondNum;
@@ -57,7 +57,7 @@ public class ArithmeticCalculator<T> {
     //입력 받은 기준 값보다 큰 값 반환
     public List<T> searchBiggerNumbers(T value) {
         return resultList.stream()
-                .filter(num -> ((Number)num).doubleValue() > ((Number)value).doubleValue())
+                .filter(num -> num.doubleValue() > value.doubleValue())
                 .collect(Collectors.toList());
     }
 }
